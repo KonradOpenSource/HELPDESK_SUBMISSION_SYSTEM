@@ -380,3 +380,4 @@ ng serve --verbose
 - **Image optimization** and lazy loading
 
 ## 📄 License
+This project is licensed under the MIT License.
