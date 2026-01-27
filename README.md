@@ -1,6 +1,26 @@
 # Helpdesk Ticket System
 
-A comprehensive helpdesk ticket management solution designed to streamline customer support operations for businesses of all sizes.
+The Helpdesk Ticket System is a comprehensive solution for managing customer support requests, designed to streamline and optimize support operations for businesses of any size. It addresses common challenges such as lost inquiries, slow response times, and lack of accountability by centralizing all customer requests in one place. Through automated ticket assignment, real‑time tracking, and clear performance reporting, the system enables efficient resource allocation, ensures SLA compliance, and significantly improves customer satisfaction by accelerating response and resolution times.
+
+
+💻 Tech Stack:
+
+
+
+Angular_Design is developed using following technologies:
+
+
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)   ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white) ![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)  ![RxJS](https://img.shields.io/badge/rxjs-%23B7178C.svg?style=for-the-badge&logo=reactivex&logoColor=white) Angular Material   ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white) ![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
+
+
+Testing:
+
+![Vitest](https://img.shields.io/badge/-Vitest-252529?style=for-the-badge&logo=vitest&logoColor=FCC72B)
+[![](https://visitcount.itsvg.in/api?id=ggggf&icon=0&color=0)](https://visitcount.itsvg.in)
+JUnit 
+
+
 
 ## 🎯 Problem Solved
 
@@ -380,3 +400,4 @@ ng serve --verbose
 - **Image optimization** and lazy loading
 
 ## 📄 License
+This project is licensed under the MIT License.
