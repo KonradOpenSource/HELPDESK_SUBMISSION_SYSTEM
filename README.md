@@ -22,7 +22,7 @@ JUnit
 
 ## photos of the application in action
 
-<img src="screenshots/Zrzut ekranu 2025-08-24 o 15.09.21.png" alt="Podgląd aplikacji" width="600">
+<img src="screenshots/Zrzut ekranu 2026-01-27 o 18.02.01.png" alt="Podgląd aplikacji" width="600">
 <img src="screenshots/Zrzut ekranu 2025-08-24 o 15.09.38.png" alt="Podgląd aplikacji" width="600">
 <img src="screenshots/Zrzut ekranu 2025-08-24 o 15.11.06.png" alt="Podgląd aplikacji" width="600">
 <img src="screenshots/Zrzut ekranu 2025-08-24 o 15.11.19.png" alt="Podgląd aplikacji" width="600">
