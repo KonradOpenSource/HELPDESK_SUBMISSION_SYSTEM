@@ -2,6 +2,26 @@
 
 The Helpdesk Ticket System is a comprehensive solution for managing customer support requests, designed to streamline and optimize support operations for businesses of any size. It addresses common challenges such as lost inquiries, slow response times, and lack of accountability by centralizing all customer requests in one place. Through automated ticket assignment, real‑time tracking, and clear performance reporting, the system enables efficient resource allocation, ensures SLA compliance, and significantly improves customer satisfaction by accelerating response and resolution times.
 
+
+💻 Tech Stack:
+
+
+
+Angular_Design is developed using following technologies:
+
+
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)   ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white) ![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)  ![RxJS](https://img.shields.io/badge/rxjs-%23B7178C.svg?style=for-the-badge&logo=reactivex&logoColor=white) Angular Material
+
+
+Testing:
+
+![Vitest](https://img.shields.io/badge/-Vitest-252529?style=for-the-badge&logo=vitest&logoColor=FCC72B)
+[![](https://visitcount.itsvg.in/api?id=ggggf&icon=0&color=0)](https://visitcount.itsvg.in)
+
+
+
+
 ## 🎯 Problem Solved
 
 **Business Challenge:** Companies struggle with managing customer support requests efficiently, leading to:
