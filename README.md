@@ -154,13 +154,8 @@ JUnit
 2. **Start the system**
 
    ```bash
-   # Step 1: Start PostgreSQL database
-   docker run -d --name helpdesk-postgres \
-     -e POSTGRES_DB=helpdesk \
-     -e POSTGRES_USER=helpdesk \
-     -e POSTGRES_PASSWORD=helpdesk123 \
-     -p 5432:5432 \
-     postgres:15-alpine
+   # docker-compose up -d
+
 
    # Step 2: Start Backend (in new terminal)
    cd backend
@@ -182,12 +177,7 @@ JUnit
 1. **Start Database**
 
    ```bash
-   docker run -d --name helpdesk-postgres \
-     -e POSTGRES_DB=helpdesk \
-     -e POSTGRES_USER=helpdesk \
-     -e POSTGRES_PASSWORD=helpdesk123 \
-     -p 5432:5432 \
-     postgres:15-alpine
+   docker-compose up -d
    ```
 
 2. **Start Backend**
