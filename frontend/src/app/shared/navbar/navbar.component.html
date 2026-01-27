@@ -1,0 +1,216 @@
+<nav class="navbar" *ngIf="currentUser">
+  <div class="navbar-brand">
+    <h2>Helpdesk System</h2>
+  </div>
+
+  <div class="navbar-menu" [class.active]="isMenuOpen">
+    <a class="nav-item" routerLink="/dashboard" routerLinkActive="active">
+      <mat-icon>dashboard</mat-icon>
+      <span>Dashboard</span>
+    </a>
+
+    <a class="nav-item" routerLink="/tickets" routerLinkActive="active">
+      <mat-icon>list</mat-icon>
+      <span>My Tickets</span>
+    </a>
+
+    <a class="nav-item" routerLink="/tickets/new" routerLinkActive="active">
+      <mat-icon>add</mat-icon>
+      <span>New Ticket</span>
+    </a>
+
+    <!-- Admin/Agent specific menu items -->
+    <a
+      class="nav-item"
+      routerLink="/admin"
+      routerLinkActive="active"
+      *ngIf="isAdmin()"
+    >
+      <mat-icon>admin_panel_settings</mat-icon>
+      <span>Admin Panel</span>
+    </a>
+
+    <a
+      class="nav-item"
+      routerLink="/agent"
+      routerLinkActive="active"
+      *ngIf="isAgent() || isAdmin()"
+    >
+      <mat-icon>support_agent</mat-icon>
+      <span>Agent Panel</span>
+    </a>
+  </div>
+
+  <div class="navbar-user">
+    <div class="user-info">
+      <span class="username">{{ currentUser.username }}</span>
+      <span
+        class="role-badge"
+        [class.role-admin]="isAdmin()"
+        [class.role-agent]="isAgent()"
+        [class.role-user]="isUser()"
+      >
+        {{ getRoleDisplayName(currentUser.role) }}
+      </span>
+    </div>
+
+    <button
+      mat-icon-button
+      class="logout-btn"
+      (click)="logout()"
+      title="Logout"
+    >
+      <mat-icon>logout</mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      class="menu-toggle"
+      (click)="toggleMenu()"
+      *ngIf="isMobile"
+    >
+      <mat-icon>{{ isMenuOpen ? "close" : "menu" }}</mat-icon>
+    </button>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .navbar-brand h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .navbar-menu {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .nav-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .nav-item.active {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+  }
+
+  .username {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .role-badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .role-badge.role-admin {
+    background: #f44336;
+    color: white;
+  }
+
+  .role-badge.role-agent {
+    background: #ff9800;
+    color: white;
+  }
+
+  .role-badge.role-user {
+    background: #4caf50;
+    color: white;
+  }
+
+  .logout-btn {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  .logout-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(15deg);
+  }
+
+  .menu-toggle {
+    display: none;
+    color: white;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 1rem;
+    }
+
+    .navbar-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      flex-direction: column;
+      padding: 1rem;
+      gap: 0.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-menu.active {
+      max-height: 400px;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .user-info {
+      display: none;
+    }
+  }
+</style>

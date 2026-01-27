@@ -1,0 +1,4 @@
+com/helpdesk/service/CategoryServiceTest.class
+com/helpdesk/service/AuthServiceTest.class
+com/helpdesk/security/JwtTokenProviderTest.class
+com/helpdesk/service/TicketServiceTest.class

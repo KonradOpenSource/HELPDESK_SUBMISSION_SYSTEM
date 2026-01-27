@@ -1,0 +1,137 @@
+<div class="create-ticket-container">
+  <div class="header">
+    <h1>Create New Ticket</h1>
+    <button mat-stroked-button (click)="cancel()">Cancel</button>
+  </div>
+
+  <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="ticket-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        formControlName="title"
+        placeholder="Enter ticket title..."
+      />
+      <mat-error>{{ getErrorMessage("title") }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Describe your issue in detail..."
+        rows="5"
+      ></textarea>
+      <mat-error>{{ getErrorMessage("description") }}</mat-error>
+    </mat-form-field>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority">
+          <mat-option value="LOW">Low</mat-option>
+          <mat-option value="MEDIUM">Medium</mat-option>
+          <mat-option value="HIGH">High</mat-option>
+          <mat-option value="CRITICAL">Critical</mat-option>
+        </mat-select>
+        <mat-error>{{ getErrorMessage("priority") }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="categoryId" [disabled]="isLoading">
+          <mat-option *ngIf="categories.length === 0" disabled>
+            Loading categories...
+          </mat-option>
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{ getErrorMessage("categoryId") }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Assigned To</mat-label>
+        <mat-select formControlName="assignedToId" [disabled]="isLoading">
+          <mat-option *ngIf="users.length === 0" disabled>
+            Loading users...
+          </mat-option>
+          <mat-option [value]="null">Unassigned</mat-option>
+          <mat-option *ngFor="let user of users" [value]="user.id">
+            {{ user.firstName }} {{ user.lastName }} ({{ user.username }})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-actions">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="isSubmitting || ticketForm.invalid"
+      >
+        <span *ngIf="!isSubmitting">Create Ticket</span>
+        <span *ngIf="isSubmitting">Creating...</span>
+      </button>
+      <button
+        mat-stroked-button
+        type="button"
+        (click)="cancel()"
+        [disabled]="isSubmitting"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
+
+<style>
+  .create-ticket-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .ticket-form {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .form-row mat-form-field {
+    flex: 1;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 30px;
+  }
+
+  .form-actions button {
+    min-width: 120px;
+  }
+</style>

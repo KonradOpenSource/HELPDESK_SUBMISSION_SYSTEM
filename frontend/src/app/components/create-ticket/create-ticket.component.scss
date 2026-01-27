@@ -1,0 +1,70 @@
+.create-ticket-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.ticket-form {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-row mat-form-field {
+  flex: 1;
+}
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.form-actions button {
+  min-width: 120px;
+}
+
+/* Fix for mat-select dropdown z-index issues */
+::ng-deep .cdk-overlay-container {
+  z-index: 9999 !important;
+}
+
+::ng-deep .mat-select-panel {
+  z-index: 9999 !important;
+}
+
+/* Ensure mat-select is clickable */
+::ng-deep .mat-select-value {
+  pointer-events: none;
+}
+
+::ng-deep .mat-select-trigger {
+  cursor: pointer !important;
+}
+
+::ng-deep .mat-select:not(.mat-select-disabled) .mat-select-trigger {
+  cursor: pointer !important;
+}
+
+::ng-deep .mat-select:not(.mat-select-disabled):hover .mat-select-trigger {
+  background-color: rgba(0, 0, 0, 0.04);
+}

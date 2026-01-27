@@ -1,0 +1,215 @@
+<div class="ticket-details-container" *ngIf="!isLoading; else loading">
+  <div class="header">
+    <button mat-icon-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1 *ngIf="ticket">Ticket #{{ ticket.id }}</h1>
+  </div>
+
+  <div class="ticket-content" *ngIf="ticket">
+    <mat-card class="ticket-card">
+      <mat-card-header>
+        <mat-card-title>{{ ticket.title }}</mat-card-title>
+        <mat-card-subtitle>
+          <span class="status" [style.color]="getStatusColor(ticket.status)">{{
+            ticket.status
+          }}</span>
+          <span
+            class="priority"
+            [style.color]="getPriorityColor(ticket.priority)"
+            >{{ ticket.priority }}</span
+          >
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="description">{{ ticket.description }}</p>
+
+        <div class="ticket-meta">
+          <div class="meta-item">
+            <strong>Category:</strong> {{ ticket.categoryName }}
+          </div>
+          <div class="meta-item">
+            <strong>Created by:</strong> {{ ticket.createdByName }}
+          </div>
+          <div class="meta-item">
+            <strong>Assigned to:</strong>
+            {{ ticket.assignedToName || "Unassigned" }}
+          </div>
+          <div class="meta-item">
+            <strong>Created:</strong> {{ formatDate(ticket.createdAt) }}
+          </div>
+          <div class="meta-item" *ngIf="ticket.updatedAt">
+            <strong>Updated:</strong> {{ formatDate(ticket.updatedAt) }}
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="comments-section">
+      <h2>Comments</h2>
+
+      <div class="add-comment">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Add a comment</mat-label>
+          <textarea
+            matInput
+            [(ngModel)]="newComment"
+            placeholder="Write your comment here..."
+            rows="3"
+          ></textarea>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="addComment()"
+          [disabled]="!newComment.trim() || isSubmittingComment"
+        >
+          <span *ngIf="!isSubmittingComment">Add Comment</span>
+          <span *ngIf="isSubmittingComment">Adding...</span>
+        </button>
+      </div>
+
+      <div class="comments-list" *ngIf="comments.length > 0; else noComments">
+        <mat-card *ngFor="let comment of comments" class="comment-card">
+          <mat-card-content>
+            <div class="comment-header">
+              <strong>{{ comment.username }}</strong>
+              <span class="comment-date">{{
+                formatDate(comment.createdAt)
+              }}</span>
+            </div>
+            <p class="comment-content">{{ comment.content }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <ng-template #noComments>
+        <p class="no-comments">No comments yet. Be the first to comment!</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+    <p>Loading ticket details...</p>
+  </div>
+</ng-template>
+
+<style>
+  .ticket-details-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .header h1 {
+    margin: 0;
+  }
+
+  .ticket-card {
+    margin-bottom: 30px;
+  }
+
+  .status,
+  .priority {
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.85em;
+    font-weight: 500;
+    margin-right: 8px;
+  }
+
+  .description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin: 20px 0;
+  }
+
+  .ticket-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .meta-item {
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 6px;
+  }
+
+  .comments-section {
+    margin-top: 30px;
+  }
+
+  .comments-section h2 {
+    margin-bottom: 20px;
+  }
+
+  .add-comment {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .comment-card {
+    margin-bottom: 0;
+  }
+
+  .comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .comment-date {
+    color: #666;
+    font-size: 0.9em;
+  }
+
+  .comment-content {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .no-comments {
+    text-align: center;
+    color: #666;
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+  }
+
+  .loading mat-spinner {
+    margin-bottom: 20px;
+  }
+</style>

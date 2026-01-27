@@ -1,0 +1,122 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 0;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+
+  .half-width {
+    flex: 1;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.register-button {
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+.login-link {
+  color: #3f51b5;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+mat-card-actions {
+  padding: 16px 24px;
+}
+
+h2 {
+  color: #333;
+  font-weight: 600;
+  margin: 0;
+}
+
+p {
+  color: #666;
+  margin: 8px 0;
+}
+
+// Material Design customizations
+::ng-deep .mat-form-field-appearance-outline {
+  .mat-form-field-outline {
+    border-radius: 8px;
+  }
+
+  &.mat-focused .mat-form-field-outline-thick {
+    color: #3f51b5;
+  }
+}
+
+::ng-deep .mat-raised-button {
+  &.mat-primary {
+    background-color: #3f51b5;
+
+    &:hover {
+      background-color: #303f9f;
+    }
+  }
+}
+
+// Loading state
+.register-button {
+  mat-spinner {
+    margin-right: 8px;
+  }
+}
+
+// Responsive design
+@media (max-width: 600px) {
+  .register-container {
+    padding: 10px;
+  }
+
+  .register-card {
+    margin: 10px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+
+    .half-width {
+      width: 100%;
+    }
+  }
+}

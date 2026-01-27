@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Edit Category</h2>
+
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter category name...">
+      <mat-error>{{ getErrorMessage('name') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Enter category description..."
+        rows="3"
+      ></textarea>
+      <mat-error>{{ getErrorMessage('description') }}</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="categoryForm.invalid"
+    >
+      Update Category
+    </button>
+  </mat-dialog-actions>
+</form>
+
+<style>
+  .full-width {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+</style>
