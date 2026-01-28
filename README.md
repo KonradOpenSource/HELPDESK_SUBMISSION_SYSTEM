@@ -154,7 +154,7 @@ JUnit
 2. **Start the system**
 
    ```bash
-   # docker-compose up -d
+   # docker-compose up --build
 
 
    # Step 2: Start Backend (in new terminal)
@@ -177,7 +177,7 @@ JUnit
 1. **Start Database**
 
    ```bash
-   docker-compose up -d
+   docker-compose up --build
    ```
 
 2. **Start Backend**
